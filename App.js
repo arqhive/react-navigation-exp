@@ -89,11 +89,33 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator
+        initialRouteName="Home"
+        // 공통 옵션
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#f4511e',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}>
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{title: 'Overview'}}
+          options={{
+            title: 'Overview',
+            // 헤더 View 스타일
+            headerStyle: {
+              backgroundColor: '#f4511e',
+            },
+            headerTintColor: '#fff', // 뒤로 버튼과 제목 색상
+            headerTitleStyle: {
+              // 타이틀 스타일
+              fontWeight: 'bold',
+            },
+          }}
         />
         <Stack.Screen
           name="Details"
