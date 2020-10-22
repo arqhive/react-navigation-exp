@@ -32,7 +32,9 @@ export default function App() {
           component={HomeScreen}
           options={{title: 'Overview'}}
         />
-        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="Details">
+          {(props) => <DetailsScreen {...props} myData="myData" />}
+        </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
