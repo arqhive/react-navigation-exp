@@ -24,6 +24,11 @@ function DetailsScreen({navigation}) {
         title="Go to Details... again"
         onPress={() => navigation.push('Details')} // 이미 있는 경로지만 새로 경로를 추가한다.
       />
+      <Button title="Go back" onPress={() => navigation.goBack()} />
+      <Button
+        title="Go back to first screen in stack"
+        onPress={() => navigation.popToTop()} // 스택의 첫번째 화면으로 이동함
+      />
     </View>
   );
 }
