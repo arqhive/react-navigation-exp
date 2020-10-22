@@ -3,6 +3,9 @@ import {View, Text, Button, TextInput} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
+// navigation -> 화면의 탐색 props
+// route -> 화면의 경로 props
+
 // 스택 내비게이터 만들기
 function HomeScreen({route, navigation}) {
   // React.useEffect(() => {
@@ -26,6 +29,10 @@ function HomeScreen({route, navigation}) {
       <Button
         title="Create Post"
         onPress={() => navigation.navigate('CreatePost')}
+      />
+      <Button
+        title="Update the title"
+        onPress={() => navigation.setOptions({title: 'Updated!'})} // options 변경 방법
       />
       <Text style={{margin: 10}}>Post: {route.params?.post}</Text>
     </View>
@@ -93,7 +100,11 @@ export default function App() {
           initialParams={{itemId: 42, otherParam: 'default'}}>
           {(props) => <DetailsScreen {...props} myData="myData" />}
         </Stack.Screen>
-        <Stack.Screen name="CreatePost" component={CreatePostScreen} />
+        <Stack.Screen
+          name="CreatePost"
+          component={CreatePostScreen}
+          // options={({route, navigation}) => ({title: route.params.name})} // 매개 변수를 이용할수있다.
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
