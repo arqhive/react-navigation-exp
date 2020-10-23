@@ -137,7 +137,11 @@ export default function App() {
         />
         <Stack.Screen
           name="Details"
-          initialParams={{itemId: 42, otherParam: 'default'}}>
+          initialParams={{itemId: 42, otherParam: 'default'}}
+          options={{
+            headerBackTitle: '뒤로',
+            headerTruncatedBackTitle: '뒤로로',
+          }}>
           {(props) => <DetailsScreen {...props} myData="myData" />}
         </Stack.Screen>
         <Stack.Screen
