@@ -8,10 +8,20 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 // 스택 내비게이터 만들기
 function HomeScreen({route, navigation}) {
+  const [count, setCount] = React.useState(1);
   // React.useEffect(() => {
   //   if (route.params?.post) {
   //   }
   // }, [route.params?.post]);
+
+  // 헤더가 화면과 상호작용하는 방법
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Button onPress={() => setCount((c) => c + 1)} title="Update Count" />
+      ),
+    });
+  }, [navigation]);
 
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
@@ -35,6 +45,7 @@ function HomeScreen({route, navigation}) {
         onPress={() => navigation.setOptions({title: 'Updated!'})} // options 변경 방법
       />
       <Text style={{margin: 10}}>Post: {route.params?.post}</Text>
+      <Text>{count}</Text>
     </View>
   );
 }
@@ -115,6 +126,13 @@ export default function App() {
               // 타이틀 스타일
               fontWeight: 'bold',
             },
+            headerRight: () => (
+              <Button
+                onPress={() => alert('This is a button!')}
+                title="Info"
+                color="#fff"
+              />
+            ),
           }}
         />
         <Stack.Screen
