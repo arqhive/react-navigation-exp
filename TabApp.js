@@ -49,6 +49,9 @@ function SettingsStackScreen() {
 
 const Tab = createBottomTabNavigator();
 
+// 특정 화면에서 탭을 가리고 싶은경우
+// 탭 내비게이터를 스택 내비게이터 안에 넣는다.
+
 export default function App() {
   return (
     <NavigationContainer>
